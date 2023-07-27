@@ -5,7 +5,6 @@ import 'package:mobile/features/home/pages/home_page.dart';
 import 'package:mobile/features/login/pages/login.dart';
 import 'package:mobile/features/login/provider/login_provider.dart';
 import 'package:mobile/local_storage/local_storage.dart';
-import 'package:mobile/navigation/main_navigator.dart';
 import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +13,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      key: MainNavigator.scaffoldKey,
       providers: [
         ChangeNotifierProvider(create: (_) => LoginProvider()),
       ],
