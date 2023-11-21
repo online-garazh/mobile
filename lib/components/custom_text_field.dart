@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/theme/custom_text_style.dart';
 import 'package:mobile/utils/extensions.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     required this.hintText,
-    this.height = 60.0,
-    this.isPassword = false,
+    required this.errorText,
     required this.controller,
+    this.height = 100.0,
+    this.isPassword = false,
+    this.isEmail = false,
+    this.textStyle = AppPallete.font18w400,
+    this.fillColor = Colors.white,
+    this.cursorColor = Colors.black54,
+    this.cursorWidth = 2,
   });
   final String hintText;
+  final String errorText;
   final double height;
   final bool isPassword;
+  final bool isEmail;
+  final TextStyle textStyle;
+  final Color fillColor;
+  final Color cursorColor;
   final TextEditingController controller;
+  final double cursorWidth;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -30,20 +43,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    const fontSizeValue = 18.0;
-
+    final CustomTextField(
+      :cursorWidth,
+      :cursorColor,
+      :controller,
+      :fillColor,
+      :isPassword,
+      // :isEmail,
+      :height,
+      :hintText,
+      :textStyle,
+    ) = widget;
     return SizedBox(
-      height: 100,
+      height: height,
       child: TextFormField(
         validator: _validator,
-        cursorColor: Colors.black54,
-        cursorWidth: 2,
+        cursorColor: cursorColor,
+        cursorWidth: cursorWidth,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: controller,
         obscureText: isObscureText,
-        style: const TextStyle(fontSize: fontSizeValue),
+        style: textStyle,
         decoration: InputDecoration(
-          suffixIcon: widget.isPassword
+          suffixIcon: isPassword
               ? IconButton(
                   onPressed: () =>
                       setState(() => isObscureText = !isObscureText),
@@ -53,7 +75,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   color: Colors.grey[600],
                 )
               : null,
-          fillColor: Colors.white,
+          fillColor: fillColor,
           errorMaxLines: 2,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
@@ -69,28 +91,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderSide: const BorderSide(color: Colors.black54),
             borderRadius: BorderRadius.circular(6),
           ),
-          hintText: widget.hintText,
+          hintText: hintText,
         ),
       ),
     );
   }
 
   String? _validator(String? val) {
-    switch (widget.isPassword) {
-      case true:
-        if (val != null && !val.isValidPassword) {
-          return 'Enter valid Password';
-        } else {
-          return null;
-        }
-      case false:
-        if (val != null && !val.isValidEmail) {
-          return 'Enter valid Email';
-        } else {
-          return null;
-        }
-      default:
-        return null;
+    if (val == null) return widget.errorText;
+    bool isValid = false;
+    if (widget.isPassword) {
+      isValid = val.isValidPassword;
+    } else if (widget.isEmail) {
+      isValid = val.isValidEmail;
     }
+    return isValid ? null : widget.errorText;
   }
 }

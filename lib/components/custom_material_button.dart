@@ -5,9 +5,13 @@ class CustomMaterialButton extends StatelessWidget {
     super.key,
     this.height = 60.0,
     required this.onPressed,
+    required this.color,
+    required this.textTheme,
   });
   final double height;
   final VoidCallback onPressed;
+  final Color color;
+  final TextStyle textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +21,11 @@ class CustomMaterialButton extends StatelessWidget {
       child: MaterialButton(
         onPressed: onPressed,
         height: height,
-        color: Colors.black,
+        color: color,
         clipBehavior: Clip.hardEdge,
-        child: const Text(
+        child: Text(
           'Увійти',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontWeight: FontWeight.w600,
-          ),
+          style: textTheme,
         ),
       ),
     );

@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/components/custom_material_button.dart';
 import 'package:mobile/components/custom_text_button.dart';
 import 'package:mobile/components/custom_text_field.dart';
-import 'package:mobile/features/login/pages/success_screen.dart';
+import 'package:mobile/theme/custom_text_style.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -38,34 +40,20 @@ class _LoginView extends StatelessWidget {
               const Text(
                 'Увійти',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+                style: AppPallete.font30w700,
               ),
               const SizedBox(
                 height: 40,
               ),
               const _FormLogin(),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
-              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomTextButton(
-                      content: 'Реєстрація',
-                      onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const SuccessScreen(),
-                            ),
-                          )),
-                  CustomTextButton(
-                    content: 'Забули пароль?',
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const SuccessScreen(),
-                      ),
-                    ),
-                  ),
+                  CustomTextButton(content: 'Реєстрація', onPressed: () {}),
+                  CustomTextButton(content: 'Забули пароль?', onPressed: () {}),
                 ],
               )
             ],
@@ -94,23 +82,32 @@ class _FormLoginState extends State<_FormLogin> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CustomTextField(
+            errorText: 'Enter valid email',
             hintText: 'Електронна пошта*',
-            height: 55,
+            height: 100,
+            isEmail: true,
             controller: _emailController,
+            fillColor: Colors.white,
+            cursorColor: Colors.black54,
+            cursorWidth: 2,
           ),
           CustomTextField(
             hintText: 'Пароль*',
+            errorText: 'Enter valid password',
             isPassword: true,
-            height: 55,
+            height: 100,
             controller: _passwordController,
+            fillColor: Colors.white,
+            cursorColor: Colors.black54,
+            cursorWidth: 2,
           ),
           CustomMaterialButton(
-            height: 55,
+            height: 60,
+            color: Colors.black,
+            textTheme: AppPallete.font18w600.copyWith(color: Colors.white),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SuccessScreen(),
-                ));
+                log('LOGGED SUCCESSFULLY');
               }
             },
           ),

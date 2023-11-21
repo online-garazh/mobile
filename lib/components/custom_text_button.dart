@@ -1,33 +1,26 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
+import 'package:mobile/theme/custom_text_style.dart';
 
 class CustomTextButton extends StatelessWidget {
-  const CustomTextButton(
-      {super.key, required this.content, required this.onPressed});
+  const CustomTextButton({
+    super.key,
+    required this.content,
+    required this.onPressed,
+    this.padding = EdgeInsets.zero,
+  });
   final String content;
   final VoidCallback onPressed;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        overlayColor: const MaterialStatePropertyAll(Colors.black12),
-        backgroundColor: const MaterialStatePropertyAll(Colors.white10),
-        padding: const MaterialStatePropertyAll(
-            EdgeInsets.symmetric(vertical: 12, horizontal: 8)),
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
-        ),
-      ),
-      child: Text(
-        content,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.w400,
-        ),
+    return CupertinoButton(
+      onPressed: () => log(content),
+      padding: padding,
+      child: SizedBox(
+        child: Text(content, style: AppPallete.font18w400),
       ),
     );
   }
