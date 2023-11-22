@@ -49,7 +49,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
       :controller,
       :fillColor,
       :isPassword,
-      // :isEmail,
       :height,
       :hintText,
       :textStyle,

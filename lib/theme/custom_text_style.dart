@@ -18,16 +18,4 @@ class AppPallete {
     fontSize: 30.0,
     fontWeight: FontWeight.w700,
   );
-
-  // static TextStyle _textStyle(
-  //   double size,
-  //   FontWeight fontWeight,
-  //   Color color,
-  // ) {
-  //   return TextStyle(
-  //     fontSize: size,
-  //     fontWeight: fontWeight,
-  //     color: color,
-  //   );
-  // }
 }

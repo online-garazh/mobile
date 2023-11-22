@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:mobile/components/custom_material_button.dart';
 import 'package:mobile/components/custom_text_button.dart';
@@ -52,8 +51,16 @@ class _LoginView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomTextButton(content: 'Реєстрація', onPressed: () {}),
-                  CustomTextButton(content: 'Забули пароль?', onPressed: () {}),
+                  CustomTextButton(
+                      title: 'Реєстрація',
+                      onPressed: () {
+                        log('Registration');
+                      }),
+                  CustomTextButton(
+                      title: 'Забули пароль?',
+                      onPressed: () {
+                        log('Forgot password');
+                      }),
                 ],
               )
             ],
@@ -103,6 +110,7 @@ class _FormLoginState extends State<_FormLogin> {
           ),
           CustomMaterialButton(
             height: 60,
+            title: 'Увійти',
             color: Colors.black,
             textTheme: AppPallete.font18w600.copyWith(color: Colors.white),
             onPressed: () {

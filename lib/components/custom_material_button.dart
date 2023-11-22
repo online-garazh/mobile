@@ -7,7 +7,9 @@ class CustomMaterialButton extends StatelessWidget {
     required this.onPressed,
     required this.color,
     required this.textTheme,
+    required this.title,
   });
+  final String title;
   final double height;
   final VoidCallback onPressed;
   final Color color;
@@ -24,7 +26,7 @@ class CustomMaterialButton extends StatelessWidget {
         color: color,
         clipBehavior: Clip.hardEdge,
         child: Text(
-          'Увійти',
+          title,
           style: textTheme,
         ),
       ),
