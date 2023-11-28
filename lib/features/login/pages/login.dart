@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/components/custom_material_button.dart';
 import 'package:mobile/components/custom_text_button.dart';
 import 'package:mobile/components/custom_text_field.dart';
-import 'package:mobile/theme/custom_text_style.dart';
+import 'package:mobile/components/spacers.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -33,31 +34,25 @@ class _LoginView extends StatelessWidget {
               const FlutterLogo(
                 size: 100,
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              Space.spaceH30,
               const Text(
                 'Увійти',
                 textAlign: TextAlign.center,
-                style: AppPallete.font30w700,
+                style: AppPalette.font30w700,
               ),
-              const SizedBox(
-                height: 40,
-              ),
+              Space.spaceH40,
               const _FormLogin(),
-              const SizedBox(
-                height: 20,
-              ),
+              Space.spaceH20,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomTextButton(
-                      title: 'Реєстрація',
+                      text: 'Реєстрація',
                       onPressed: () {
                         log('Registration');
                       }),
                   CustomTextButton(
-                      title: 'Забули пароль?',
+                      text: 'Забули пароль?',
                       onPressed: () {
                         log('Forgot password');
                       }),
@@ -94,8 +89,8 @@ class _FormLoginState extends State<_FormLogin> {
             height: 100,
             isEmail: true,
             controller: _emailController,
-            fillColor: Colors.white,
-            cursorColor: Colors.black54,
+            fillColor: AppPalette.white,
+            cursorColor: AppPalette.black54,
             cursorWidth: 2,
           ),
           CustomTextField(
@@ -104,15 +99,15 @@ class _FormLoginState extends State<_FormLogin> {
             isPassword: true,
             height: 100,
             controller: _passwordController,
-            fillColor: Colors.white,
-            cursorColor: Colors.black54,
+            fillColor: AppPalette.white,
+            cursorColor: AppPalette.black54,
             cursorWidth: 2,
           ),
           CustomMaterialButton(
             height: 60,
-            title: 'Увійти',
-            color: Colors.black,
-            textTheme: AppPallete.font18w600.copyWith(color: Colors.white),
+            text: 'Увійти',
+            color: AppPalette.black54,
+            textStyle: AppPalette.font18w600.copyWith(color: AppPalette.white),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 log('LOGGED SUCCESSFULLY');

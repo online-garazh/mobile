@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/theme/custom_text_style.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class CustomMaterialButton extends StatelessWidget {
   const CustomMaterialButton({
@@ -7,14 +7,14 @@ class CustomMaterialButton extends StatelessWidget {
     this.height = 60.0,
     required this.onPressed,
     required this.color,
-    this.textTheme = AppPallete.font18w400,
-    required this.title,
+    this.textStyle = AppPalette.font18w400,
+    required this.text,
   });
-  final String title;
+  final String text;
   final double height;
   final VoidCallback onPressed;
   final Color color;
-  final TextStyle textTheme;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class CustomMaterialButton extends StatelessWidget {
         color: color,
         clipBehavior: Clip.hardEdge,
         child: Text(
-          title,
-          style: textTheme,
+          text,
+          style: textStyle,
         ),
       ),
     );

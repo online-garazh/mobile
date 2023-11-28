@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/theme/custom_text_style.dart';
+import 'package:mobile/theme/custom_styles.dart';
 import 'package:mobile/utils/extensions.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -11,9 +11,9 @@ class CustomTextField extends StatefulWidget {
     this.height = 100.0,
     this.isPassword = false,
     this.isEmail = false,
-    this.textStyle = AppPallete.font18w400,
-    this.fillColor = Colors.white,
-    this.cursorColor = Colors.black54,
+    this.textStyle = AppPalette.font18w400,
+    this.fillColor = AppPalette.white,
+    this.cursorColor = AppPalette.black54,
     this.cursorWidth = 2,
     this.errorMaxLines = 2,
   });
@@ -74,7 +74,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   icon: isObscureText
                       ? const Icon((Icons.visibility_off_sharp))
                       : const Icon(Icons.visibility),
-                  color: Colors.grey[600],
+                  color: AppPalette.grey600,
                 )
               : null,
           fillColor: fillColor,
@@ -85,12 +85,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               width: 1.4,
-              color: Colors.black87,
+              color: AppPalette.black87,
             ),
             borderRadius: BorderRadius.circular(6),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.black54),
+            borderSide: const BorderSide(color: AppPalette.black54),
             borderRadius: BorderRadius.circular(6),
           ),
           hintText: hintText,
