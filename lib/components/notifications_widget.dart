@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/theme/custom_text_style.dart';
-import 'package:mobile/theme/default_colors.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class NewMessagesWidget extends StatelessWidget {
-  final String content;
-  final TextStyle textTheme;
+  final String text;
+  final TextStyle textStyle;
   const NewMessagesWidget({
     super.key,
-    required this.content,
-    this.textTheme = AppPallete.font14w400,
+    required this.text,
+    this.textStyle = AppPalette.font14w400,
   });
 
   @override
@@ -17,11 +16,11 @@ class NewMessagesWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: ColorPalette.red500,
+        color: AppPalette.red500,
       ),
       child: Text(
-        content,
-        style: textTheme.copyWith(color: ColorPalette.white),
+        text,
+        style: textStyle.copyWith(color: AppPalette.white),
       ),
     );
   }
@@ -37,7 +36,7 @@ class NotificationWidget extends StatelessWidget {
       height: 9,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: ColorPalette.blueAccent,
+        color: AppPalette.blue600,
       ),
     );
   }

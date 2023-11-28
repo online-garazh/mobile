@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/theme/custom_text_style.dart';
-import 'package:mobile/theme/default_colors.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class CustomSection extends StatelessWidget {
   const CustomSection({
@@ -11,8 +10,7 @@ class CustomSection extends StatelessWidget {
     this.height,
     this.width,
     this.withDividers = false,
-    this.titlePadding = const EdgeInsets.only(left: 16, bottom: 8),
-    this.titleStyle = AppPallete.font18w600DGrey,
+    this.titleStyle = AppPalette.font18w600,
   });
   final Color? color;
   final List<Widget> children;
@@ -20,7 +18,6 @@ class CustomSection extends StatelessWidget {
   final double? height;
   final String? sectionTitle;
   final bool withDividers;
-  final EdgeInsets titlePadding;
   final TextStyle titleStyle;
 
   @override
@@ -33,12 +30,15 @@ class CustomSection extends StatelessWidget {
         children: [
           sectionTitle != null
               ? Padding(
-                  padding: titlePadding,
-                  child: Text(sectionTitle!, style: titleStyle),
+                  padding: const EdgeInsets.only(left: 16, bottom: 8),
+                  child: Text(
+                    sectionTitle!,
+                    style: titleStyle.copyWith(color: AppPalette.black54),
+                  ),
                 )
               : const SizedBox.shrink(),
           ColoredBox(
-            color: color ?? ColorPalette.white,
+            color: color ?? AppPalette.white,
             child: Column(
               children: [
                 for (int i = 0; i < children.length; i++) ...[

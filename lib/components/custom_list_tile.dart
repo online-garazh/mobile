@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/components/notifications_widget.dart';
-import 'package:mobile/theme/custom_text_style.dart';
-import 'package:mobile/theme/default_colors.dart';
+import 'package:mobile/components/spacers.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class CustomListTile extends StatelessWidget {
   final Color color;
@@ -15,24 +15,22 @@ class CustomListTile extends StatelessWidget {
   final TextStyle titleStyle;
   final TextStyle headerStyle;
   final TextStyle newMessagesStyle;
-  final EdgeInsets padding;
   final bool hasNotification;
   final int newMessages;
 
   const CustomListTile({
     super.key,
-    this.color = ColorPalette.white70,
+    this.color = AppPalette.white70,
     required this.title,
     required this.onPressed,
     this.leading = const SizedBox.shrink(),
     this.trailing = const Icon(
       Icons.arrow_forward_ios_rounded,
-      color: ColorPalette.grey,
+      color: AppPalette.grey,
     ),
-    this.titleStyle = AppPallete.font18w400,
-    this.newMessagesStyle = AppPallete.font14w400,
+    this.titleStyle = AppPalette.font18w400,
+    this.newMessagesStyle = AppPalette.font14w400,
     this.height = 64,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16),
     this.hasNotification = false,
     this.newMessages = 0,
   })  : doubleLineTitle = false,
@@ -41,20 +39,19 @@ class CustomListTile extends StatelessWidget {
 
   const CustomListTile.doubleLineTitle({
     super.key,
-    this.color = ColorPalette.white70,
+    this.color = AppPalette.white70,
     this.height = 90,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16),
     required this.title,
     this.leading = const SizedBox.shrink(),
     this.trailing = const Icon(
       Icons.arrow_forward_ios_rounded,
-      color: ColorPalette.grey,
+      color: AppPalette.grey,
     ),
     required this.onPressed,
     required this.header,
-    this.titleStyle = AppPallete.font18w400,
-    this.headerStyle = AppPallete.font20w600,
-    this.newMessagesStyle = AppPallete.font14w400,
+    this.titleStyle = AppPalette.font18w400,
+    this.headerStyle = AppPalette.font20w600,
+    this.newMessagesStyle = AppPalette.font14w400,
     this.hasNotification = false,
     this.newMessages = 0,
   }) : doubleLineTitle = true;
@@ -66,11 +63,11 @@ class CustomListTile extends StatelessWidget {
     return Material(
       child: InkWell(
         onTap: onPressed,
-        overlayColor: const MaterialStatePropertyAll(ColorPalette.grey500),
+        overlayColor: const MaterialStatePropertyAll(AppPalette.grey500),
         child: Container(
           color: color,
           height: height,
-          padding: padding,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -92,9 +89,7 @@ class CustomListTile extends StatelessWidget {
                         clipBehavior: Clip.hardEdge,
                         child: leading,
                       ),
-                      const SizedBox(
-                        width: 16,
-                      ),
+                      Space.spaceW16,
                       doubleLineTitle
                           ? Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -117,15 +112,13 @@ class CustomListTile extends StatelessWidget {
                               style: titleStyle,
                               overflow: TextOverflow.visible,
                             ),
-                      const SizedBox(
-                        width: 10,
-                      ),
+                      Space.spaceW10,
                       hasNotification
                           ? const NotificationWidget()
                           : const SizedBox.shrink(),
                       newMessages > 0
                           ? NewMessagesWidget(
-                              content: newMessages.toString(),
+                              text: newMessages.toString(),
                             )
                           : const SizedBox.shrink(),
                     ],

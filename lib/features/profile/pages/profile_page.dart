@@ -3,7 +3,8 @@ import 'package:mobile/components/custom_app_bar.dart';
 import 'package:mobile/components/custom_section.dart';
 import 'package:mobile/components/custom_icon_button.dart';
 import 'package:mobile/components/custom_list_tile.dart';
-import 'package:mobile/theme/default_colors.dart';
+import 'package:mobile/components/spacers.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -14,38 +15,38 @@ class ProfilePage extends StatelessWidget {
       appBar: CustomAppBar(
         title: const Text(
           'Меню',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: AppPalette.black),
         ),
         centerTitle: true,
-        backgroundColor: ColorPalette.white70,
+        backgroundColor: AppPalette.white70,
         actions: [
           CustomIconButton(
             onPressed: () {},
             icon: Icons.search,
-            color: Colors.black,
+            color: AppPalette.black,
           ),
           CustomIconButton(
             onPressed: () {},
             icon: Icons.add,
-            color: Colors.black,
+            color: AppPalette.black,
           ),
         ],
       ),
-      body: const _MenuView(),
+      body: const _ProfileView(),
     );
   }
 }
 
-class _MenuView extends StatelessWidget {
-  const _MenuView();
+class _ProfileView extends StatelessWidget {
+  const _ProfileView();
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorPalette.grey100,
+      color: AppPalette.grey100,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 30),
+            Space.spaceH30,
             CustomListTile.doubleLineTitle(
               header: 'Serega0879',
               title: 'Serega',
@@ -55,7 +56,7 @@ class _MenuView extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 30),
+            Space.spaceH30,
             CustomSection(
               withDividers: true,
               sectionTitle: 'ZALUPA',
@@ -111,9 +112,7 @@ class _MenuView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            Space.spaceH30,
             CustomSection(
               sectionTitle: 'Щось ще',
               children: [
@@ -139,9 +138,7 @@ class _MenuView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            Space.spaceH40,
           ],
         ),
       ),

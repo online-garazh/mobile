@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/theme/custom_styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
@@ -6,7 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.centerTitle = true,
     this.actions,
-    this.backgroundColor = Colors.white10,
+    this.backgroundColor = AppPalette.white10,
   });
   final Text title;
   final bool centerTitle;
