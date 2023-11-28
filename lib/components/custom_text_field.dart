@@ -15,6 +15,7 @@ class CustomTextField extends StatefulWidget {
     this.fillColor = Colors.white,
     this.cursorColor = Colors.black54,
     this.cursorWidth = 2,
+    this.errorMaxLines = 2,
   });
   final String hintText;
   final String errorText;
@@ -26,6 +27,7 @@ class CustomTextField extends StatefulWidget {
   final Color cursorColor;
   final TextEditingController controller;
   final double cursorWidth;
+  final int errorMaxLines;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -52,6 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       :height,
       :hintText,
       :textStyle,
+      :errorMaxLines,
     ) = widget;
     return SizedBox(
       height: height,
@@ -75,7 +78,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 )
               : null,
           fillColor: fillColor,
-          errorMaxLines: 2,
+          errorMaxLines: errorMaxLines,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
           ),

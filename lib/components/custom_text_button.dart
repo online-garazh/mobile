@@ -7,10 +7,12 @@ class CustomTextButton extends StatelessWidget {
     required this.title,
     required this.onPressed,
     this.padding = EdgeInsets.zero,
+    this.textStyle = AppPallete.font18w600,
   });
   final String title;
   final VoidCallback onPressed;
   final EdgeInsets padding;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       padding: padding,
       child: SizedBox(
-        child: Text(title, style: AppPallete.font18w400),
+        child: Text(title, style: textStyle),
       ),
     );
   }

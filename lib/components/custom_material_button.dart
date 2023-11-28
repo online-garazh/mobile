@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/theme/custom_text_style.dart';
 
 class CustomMaterialButton extends StatelessWidget {
   const CustomMaterialButton({
@@ -6,7 +7,7 @@ class CustomMaterialButton extends StatelessWidget {
     this.height = 60.0,
     required this.onPressed,
     required this.color,
-    required this.textTheme,
+    this.textTheme = AppPallete.font18w400,
     required this.title,
   });
   final String title;
