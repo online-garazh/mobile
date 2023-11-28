@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mobile/theme/custom_text_style.dart';
+import 'package:flutter/material.dart';
 
-class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({
+class CustomIconButton extends StatelessWidget {
+  const CustomIconButton({
     super.key,
-    required this.title,
     required this.onPressed,
+    required this.icon,
+    this.color = Colors.black,
     this.padding = EdgeInsets.zero,
-    this.textTheme = AppPallete.font18w600,
   });
-  final String title;
+  final IconData icon;
+  final Color color;
   final VoidCallback onPressed;
   final EdgeInsets padding;
-  final TextStyle textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,10 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       padding: padding,
       child: SizedBox(
-        child: Text(title, style: textTheme),
+        child: Icon(
+          icon,
+          color: color,
+        ),
       ),
     );
   }
